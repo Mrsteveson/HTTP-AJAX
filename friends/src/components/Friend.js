@@ -1,4 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const DeleteBtn = styled.button `
+    border-radius: 50%;
+    background-color: crimson;
+    margin-bottom: 10px;
+    position: relative;
+    bottom: 85px;
+    right: 50px;
+`;
+
+const FriendCont = styled.div `
+    background-image: linear-gradient(to right, pink, lightyellow, lightblue);
+    border: 3px solid black;
+    border-radius: 50%;
+    margin: 10px auto;
+    width: 45%;
+`;
+
+const DetailSpan = styled.span `
+    font-weight: bold;
+`;
+
+const FriendTitle = styled.h1 `
+    text-decoration: underline;
+`;
+
+const FriendDetails = styled.div `
+    /* border: 1px solid black; */
+`;
+
+const FriendP = styled.p `
+    font-size: 18px;
+`;
 
 class Friend extends React.Component {
     constructor(props){
@@ -8,14 +42,14 @@ class Friend extends React.Component {
 
     render() {
         return(
-            <div className = 'friendContainer'>
-            <div>
-            <h1>{this.props.friend.name}</h1>
-                <p><span>Age: </span>{this.props.friend.age}</p>
-                <p><span>Email: </span>{this.props.friend.email}</p>
-            </div>
-                <button >x</button>
-            </div>
+            <FriendCont>
+                <FriendDetails className = 'friendInfo'>
+                    <FriendTitle>{this.props.friend.name}</FriendTitle>
+                    <FriendP><DetailSpan>Age: </DetailSpan>{this.props.friend.age}</FriendP>
+                    <FriendP><DetailSpan>Email: </DetailSpan>{this.props.friend.email}</FriendP>
+                </FriendDetails>
+                <DeleteBtn>x</DeleteBtn>
+            </FriendCont>
         )
     }
 }

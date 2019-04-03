@@ -1,7 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import './App.css';
 import FriendsList from './components/FriendsList';
+import styled from 'styled-components';
+
+const AppContainer = styled.div `
+  text-align: center;
+  display: flex;
+  justify-content: center;
+`;
 
 class App extends React.Component {
   constructor() {
@@ -25,11 +31,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <AppContainer>
         <FriendsList 
           friendsData={this.state.friendsData}
         />
-      </div>
+      </AppContainer>
     );
   }
 }
