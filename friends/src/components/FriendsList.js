@@ -11,19 +11,26 @@ const ListContainer = styled.div `
     justify-content: space-between;
 `;
 
-const FriendsList = props => {
-    return (
-        <ListContainer>
-            {props.friendsData.map(friend => {
-                return(
-                    <Friend 
-                        key = {friend.id}
-                        friend = {friend}
-                    />
-                )
-            })}
-        </ListContainer>
-    )
+class FriendsList extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    render() {
+        return (
+            <ListContainer>
+                {this.props.friendsData.map(friend => {
+                    return(
+                        <Friend 
+                            key = {friend.id}
+                            friend = {friend}
+                            deleteFriend = {this.props.deleteFriend}
+                            updateFriend = {this.props.updateFriend}
+                        />
+                    )
+                })}
+            </ListContainer>
+        )
+    } 
 }
 
 

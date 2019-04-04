@@ -34,21 +34,31 @@ const FriendP = styled.p `
     font-size: 18px;
 `;
 
+
 class Friend extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            editFormActive: false,
+        }
 
     }
+
+    // toggleForm = () => {
+    //     this.setState ({
+    //         editFormActive: !this.state.editFormActive
+    //     })
+    // }
 
     render() {
         return(
             <FriendCont>
-                <FriendDetails className = 'friendInfo'>
+                <FriendDetails onClick = {() => this.props.updateFriend(this.props.friend)}>
                     <FriendTitle>{this.props.friend.name}</FriendTitle>
                     <FriendP><DetailSpan>Age: </DetailSpan>{this.props.friend.age}</FriendP>
                     <FriendP><DetailSpan>Email: </DetailSpan>{this.props.friend.email}</FriendP>
                 </FriendDetails>
-                <DeleteBtn>x</DeleteBtn>
+                <DeleteBtn onClick = {() => this.props.deleteFriend(this.props.friend.id)}>x</DeleteBtn>
             </FriendCont>
         )
     }
