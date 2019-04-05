@@ -24,8 +24,10 @@ class FriendsList extends React.Component {
                         <Friend 
                             key = {friend.id}
                             friend = {friend}
+                            newFriend = {this.props.newFriend}
                             deleteFriend = {this.props.deleteFriend}
                             updateFriend = {this.props.updateFriend}
+                            handleUpdate = {this.props.handleUpdate}
                         />
                     )
                 })}

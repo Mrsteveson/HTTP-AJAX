@@ -49,7 +49,32 @@ class Friend extends React.Component {
                     <FriendP><DetailSpan>Email: </DetailSpan>{this.props.friend.email}</FriendP>
                 </FriendDetails>
                 <DeleteBtn onClick = {() => this.props.deleteFriend(this.props.friend.id)}>x</DeleteBtn>
-                <button onClick = {() => this.props.updateFriend(this.props.friend.id)}>Update</button>
+                <form>
+                    <input 
+                        type = 'text'
+                        placeholder = 'Name'
+                        name = 'name'
+                        value = {this.props.newFriend.name}
+                        onChange = {this.props.handleUpdate}
+                    />
+
+                    <input 
+                        type = 'text'
+                        placeholder = 'Age'
+                        name = 'age'
+                        value = {this.props.newFriend.age}
+                        onChange = {this.props.handleUpdate}
+                    />
+
+                    <input 
+                        type = 'text'
+                        placeholder = 'Email'
+                        name = 'email'
+                        value = {this.props.newFriend.email}
+                        onChange = {this.props.handleUpdate}
+                    />  
+                </form>
+                <button onClick = {() => this.props.updateFriend(this.props.friend.id, this.props.newFriend)}>Update</button>
             </FriendCont>
         )
     }

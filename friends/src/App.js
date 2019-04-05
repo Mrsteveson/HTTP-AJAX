@@ -21,11 +21,18 @@ class App extends React.Component {
       friend: {
         name: '',
         age: '',
-        email: '',
+        email: ''
+      },
+
+      newFriend: {
+        name: '',
+        age: '',
+        email: ''
       }
     }
   }
   
+
   componentDidMount(){
     axios
       .get('http://localhost:5000/friends')
@@ -38,9 +45,15 @@ class App extends React.Component {
 
   handleChange = event => {
     this.setState({
-      friend: {...this.state.friend, [event.target.name]: event.target.value }
+      friend: { ...this.state.friend, [event.target.name]: event.target.value }
     })
   };
+
+  handleUpdate = event => {
+    this.setState({
+      newFriend: { ...this.state.newFriend, [event.target.name]: event.target.value }
+    })
+  }
 
   addFriend = person => {
     axios
@@ -68,15 +81,16 @@ class App extends React.Component {
     .catch(err => console.log(err));
   }
   
-  updateFriend = (person, id) => {
+  updateFriend = (id, person) => {
     axios
       .put(`http://localhost:5000/friends/${id}`, person)
-      .then(response => {
-        console.log(response);
-        this.setState({
-          friendsData: response.data
+      .then(() => axios.get('http://localhost:5000/friends/'))
+        .then(response => {
+          console.log(response);
+          this.setState({
+            friendsData: response.data
+          })
         })
-      })
       .catch(err => console.log(err));
   }
 
@@ -92,8 +106,10 @@ class App extends React.Component {
         />
         <FriendsList 
           friendsData = {this.state.friendsData}
+          newFriend = {this.state.newFriend}
           deleteFriend = {this.deleteFriend}
           updateFriend = {this.updateFriend}
+          handleUpdate = {this.handleUpdate}
         />
       </AppContainer>
     );

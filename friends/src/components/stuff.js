@@ -1,14 +1,14 @@
 // App.js route code if i ever get this all refactored
 {/* <Route 
-          exact path = '/' 
-          render = {props => (
-            <FriendsList 
-              {...props} 
-              friendsData={this.state.friendsData} 
-              handleChange={this.handleChange}
-              deleteFriend={this.deleteFriend}
-            />)} 
-        /> */}
+    exact path = '/' 
+    render = {props => (
+    <FriendsList 
+        {...props} 
+        friendsData={this.state.friendsData} 
+        handleChange={this.handleChange}
+        deleteFriend={this.deleteFriend}
+    />)} 
+/> */}
         {/* <Route
           path = '/friendform/'
           render = {props => (
