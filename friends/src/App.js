@@ -3,7 +3,7 @@ import axios from 'axios';
 // import {Route, Link } from 'react-router-dom';
 
 import FriendsList from './components/FriendsList';
-// import FriendsForm from './components/FriendsForm';
+import FriendsForm from './components/FriendsForm';
 import styled from 'styled-components';
 
 
@@ -22,13 +22,7 @@ class App extends React.Component {
         name: '',
         age: '',
         email: '',
-      },
-
-      blankFriend: {
-        name: '',
-        age: '',
-        email: '',
-      },
+      }
     }
   }
   
@@ -44,21 +38,21 @@ class App extends React.Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value,
+      friend: {...this.state.friend, [event.target.name]: event.target.value }
     })
   };
 
-  addFriend = data => {
-    const blankFriend = this.state.blankFriend;
-
+  addFriend = person => {
     axios
-      .post('http://localhost:5000/friends', data)
-      .then(response => {
-        console.log(response);
-        this.setState({
-          friendsData: response.data, friend: blankFriend
+      .post('http://localhost:5000/friends', person)
+      .then(() => axios.get('https://localhost:5000/friends'))
+        .then(response => {
+          console.log(response);
+          this.setState({
+            friendsData: response.data,
+          })
+        .catch(err => console.log(err));
         })
-      })
       .catch(err => console.log(err));
   }
 
@@ -74,9 +68,9 @@ class App extends React.Component {
     .catch(err => console.log(err));
   }
   
-  updateFriend = (data, id) => {
+  updateFriend = (person, id) => {
     axios
-      .put(`http://localhost:5000/friends/${id}`, data)
+      .put(`http://localhost:5000/friends/${id}`, person)
       .then(response => {
         console.log(response);
         this.setState({
@@ -90,31 +84,12 @@ class App extends React.Component {
   render() {
     return (
       <AppContainer>
-        <form>
-          <h1>My Friends List!</h1>
-          <input 
-            type = 'text'
-            placeholder = 'Enter Name'
-            name = 'friend'
-            value = {this.state.friend.name}
-            onChange = {this.handleChange}
-          />
-          <input 
-            type = 'text'
-            placeholder = 'Enter Age'
-            name = 'friend'
-            value = {this.state.friend.age}
-            onChange = {this.handleChange}
-          />
-          <input 
-            type = 'text'
-            placeholder = 'Enter Email'
-            name = 'friend'
-            value = {this.state.friend.email}
-            onChange = {this.handleChange}
-          />
-          <button onClick = {this.addFriend}>Add Friend</button>
-        </form>
+        <h1>My Friends List!</h1>
+        <FriendsForm 
+          handleChange = {this.handleChange}
+          addFriend = {this.addFriend}
+          friend = {this.state.friend}
+        />
         <FriendsList 
           friendsData = {this.state.friendsData}
           deleteFriend = {this.deleteFriend}

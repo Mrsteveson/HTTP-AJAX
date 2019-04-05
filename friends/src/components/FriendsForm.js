@@ -1,66 +1,40 @@
-// import React from 'react';
-// import axios from 'axios';
+import React from 'react';
 
-// class FriendsForm extends React.Component {
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             name: '',
-//             age: 0,
-//             email: '',
-//         }
-//     }
+class FriendsForm extends React.Component {
+  // constructor(props){
+  //     super(props);  
+  // }
 
-//     componentDidMount = () => {
-//         if(this.props.newFriend.name) {
-//             this.setState({
-//                 name: newFriend.name,
-//                 age: newFriend.age,
-//                 email: newFriend.email
-//             })
-//         }
-//     }
+  render() {
+    return(
+      <form>
+        <input 
+          type = 'text'
+          placeholder = 'Enter Name'
+          name = 'name'
+          value = {this.props.friend.name}
+          onChange = {this.props.handleChange}
+        />
 
-//     handleChange = event => {
-//         this.setState({
-//           [event.target.name]: event.target.value,
-//         })
-//     };
+        <input 
+          type = 'text'
+          placeholder = 'Enter Age'
+          name = 'age'
+          value = {this.props.friend.age}
+          onChange = {this.props.handleChange}
+        />
 
-//     handleSubmit = event => {
-//         event.preventDefault();
+        <input 
+          type = 'text'
+          placeholder = 'Enter Email'
+          name = 'email'
+          value = {this.props.friend.email}
+          onChange = {this.props.handleChange}
+        />
+        <button onClick = {() => this.props.addFriend(this.props.friend)}>Add Friend</button>
+      </form>
+    )
+  }
+}
 
-//         if(!this.props.newFriend.name) {
-
-//         }
-//     }
-// }
-
-// export default FriendsForm;
-
-
-
-
-// App.js route code if i ever get this all refactored
-{/* <Route 
-          exact path = '/' 
-          render = {props => (
-            <FriendsList 
-              {...props} 
-              friendsData={this.state.friendsData} 
-              handleChange={this.handleChange}
-              deleteFriend={this.deleteFriend}
-            />)} 
-        /> */}
-        {/* <Route
-          path = '/friendform/'
-          render = {props => (
-            <FriendsForm 
-              {...props}
-              friendsData={this.state.friendsData}
-              newFriend={this.state.newFriend} 
-              addFriend={this.addFriend}
-              updateFriend={this.updateFriend}
-
-            />)} 
-        /> */}
+export default FriendsForm;

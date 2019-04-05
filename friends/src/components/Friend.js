@@ -36,29 +36,20 @@ const FriendP = styled.p `
 
 
 class Friend extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            editFormActive: false,
-        }
-
-    }
-
-    // toggleForm = () => {
-    //     this.setState ({
-    //         editFormActive: !this.state.editFormActive
-    //     })
+    // constructor(props){
+    //     super(props);
     // }
 
     render() {
         return(
             <FriendCont>
-                <FriendDetails onClick = {() => this.props.updateFriend(this.props.friend)}>
+                <FriendDetails>
                     <FriendTitle>{this.props.friend.name}</FriendTitle>
                     <FriendP><DetailSpan>Age: </DetailSpan>{this.props.friend.age}</FriendP>
                     <FriendP><DetailSpan>Email: </DetailSpan>{this.props.friend.email}</FriendP>
                 </FriendDetails>
                 <DeleteBtn onClick = {() => this.props.deleteFriend(this.props.friend.id)}>x</DeleteBtn>
+                <button onClick = {() => this.props.updateFriend(this.props.friend.id)}>Update</button>
             </FriendCont>
         )
     }
