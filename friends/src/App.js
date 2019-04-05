@@ -5,8 +5,6 @@ import axios from 'axios';
 import FriendsList from './components/FriendsList';
 import FriendsForm from './components/FriendsForm';
 import styled from 'styled-components';
-import './App.css'
-
 
 const AppContainer = styled.div `
   text-align: center;
