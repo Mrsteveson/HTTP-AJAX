@@ -27,7 +27,8 @@ class App extends React.Component {
       newFriend: {
         name: '',
         age: '',
-        email: ''
+        email: '',
+        id: '',
       }
     }
   }
@@ -90,6 +91,7 @@ class App extends React.Component {
           this.setState({
             friendsData: response.data
           })
+          .catch(err => console.log(err));
         })
       .catch(err => console.log(err));
   }
@@ -103,13 +105,13 @@ class App extends React.Component {
           handleChange = {this.handleChange}
           addFriend = {this.addFriend}
           friend = {this.state.friend}
+          newFriend = {this.state.newFriend}
+          updateFriend = {this.updateFriend}
+          handleUpdate = {this.handleUpdate}
         />
         <FriendsList 
           friendsData = {this.state.friendsData}
-          newFriend = {this.state.newFriend}
           deleteFriend = {this.deleteFriend}
-          updateFriend = {this.updateFriend}
-          handleUpdate = {this.handleUpdate}
         />
       </AppContainer>
     );
