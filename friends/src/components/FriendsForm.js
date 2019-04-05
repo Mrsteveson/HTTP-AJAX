@@ -1,4 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ChangeBtn = styled.button `
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 2px solid silver;
+    background-color: lightgray;
+    color: black;
+`;
+
+const Input = styled.input `
+  font-size: 16px;
+  border: 2px solid silver;
+  padding: 5px 10px;
+`;
 
 class FriendsForm extends React.Component {
   // constructor(props){
@@ -10,7 +26,7 @@ class FriendsForm extends React.Component {
       <div>
         {/*Add Friend  */}
         <form>
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Enter Name'
             name = 'name'
@@ -18,7 +34,7 @@ class FriendsForm extends React.Component {
             onChange = {this.props.handleChange}
           />
 
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Enter Age'
             name = 'age'
@@ -26,19 +42,19 @@ class FriendsForm extends React.Component {
             onChange = {this.props.handleChange}
           />
 
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Enter Email'
             name = 'email'
             value = {this.props.friend.email}
             onChange = {this.props.handleChange}
           />
-          <button onClick = {() => this.props.addFriend(this.props.friend)}>Add Friend</button>
+          <ChangeBtn onClick = {() => this.props.addFriend(this.props.friend)}>Add Friend</ChangeBtn>
         </form>
 
         {/* Edit Friend */}
         <form>
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Name'
             name = 'name'
@@ -46,7 +62,7 @@ class FriendsForm extends React.Component {
             onChange = {this.props.handleUpdate}
           />
 
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Age'
             name = 'age'
@@ -54,7 +70,7 @@ class FriendsForm extends React.Component {
             onChange = {this.props.handleUpdate}
           />
 
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'Email'
             name = 'email'
@@ -62,14 +78,14 @@ class FriendsForm extends React.Component {
             onChange = {this.props.handleUpdate}
           />
 
-          <input 
+          <Input 
             type = 'text'
             placeholder = 'id #'
             name = 'id'
             value = {this.props.newFriend.id}
             onChange = {this.props.handleUpdate}
           />
-          <button onClick = {() => this.props.updateFriend(this.props.newFriend.id, this.props.newFriend)}>Update</button>  
+          <ChangeBtn onClick = {() => this.props.updateFriend(this.props.newFriend.id, this.props.newFriend)}>Update</ChangeBtn>  
       </form>
     </div>
     )

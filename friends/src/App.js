@@ -5,12 +5,24 @@ import axios from 'axios';
 import FriendsList from './components/FriendsList';
 import FriendsForm from './components/FriendsForm';
 import styled from 'styled-components';
+import './App.css'
 
 
 const AppContainer = styled.div `
   text-align: center;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+`;
+
+const AppHeader = styled.div `
+  background: maroon;
+  padding-bottom: 25px;
+  border-bottom: 3px solid black;
+`;
+
+const AppTitle = styled.h1 `
+  color: white;
 `;
 
 class App extends React.Component {
@@ -100,15 +112,17 @@ class App extends React.Component {
   render() {
     return (
       <AppContainer>
-        <h1>My Friends List!</h1>
-        <FriendsForm 
-          handleChange = {this.handleChange}
-          addFriend = {this.addFriend}
-          friend = {this.state.friend}
-          newFriend = {this.state.newFriend}
-          updateFriend = {this.updateFriend}
-          handleUpdate = {this.handleUpdate}
-        />
+        <AppHeader>
+          <AppTitle>My Friends List!</AppTitle>
+          <FriendsForm 
+            handleChange = {this.handleChange}
+            addFriend = {this.addFriend}
+            friend = {this.state.friend}
+            newFriend = {this.state.newFriend}
+            updateFriend = {this.updateFriend}
+            handleUpdate = {this.handleUpdate}
+          />
+        </AppHeader>
         <FriendsList 
           friendsData = {this.state.friendsData}
           deleteFriend = {this.deleteFriend}
